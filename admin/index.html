@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,495 @@
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilo.css">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilo.css">
 
 </head>
+
 <body>
-    
-    
+
+    <!--NAVBAR-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">ADMIN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Cliente
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="">Dar de alta</a>
+                        <a class="dropdown-item" href="">Modificar cliente</a>
+                        <a class="dropdown-item" href="">Dar de baja</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Alquiler
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="">Alquilar</a>
+                        <a class="dropdown-item" href="">Modificar alquiler</a>
+                        <a class="dropdown-item" href="">Eliminar alquiler</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Vivienda
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="">Agregar vivienda</a>
+                        <a class="dropdown-item" href="">Modificar vivienda</a>
+                        <a class="dropdown-item" href="">Eliminar vivienda</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Citas
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="">Crear cita</a>
+                        <a class="dropdown-item" href="">Modificar cita</a>
+                        <a class="dropdown-item" href="">Eliminar cita</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Empleados
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="">Contratar empleado</a>
+                        <a class="dropdown-item" href="">Modificar empleado</a>
+                        <a class="dropdown-item" href="">Despedir empleado</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Limpieza
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="">Asignar limpieza</a>
+                        <a class="dropdown-item" href="">Modificar limpieza</a>
+                        <a class="dropdown-item" href="">Eliminar limpieza</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--FORMULARIO ALTA CLIENTE-->
+    <div class="container mt-4" id="altaCliente">
+        <form name="frmAltaCliente">
+            <fieldset>
+                <legend>Alta de Cliente</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        Nombre: <input class="form-control" type="text" name="txtNombre" placeholder="Nombre"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Apellidos: <input class="form-control" type="text" name="txtApellidos" placeholder="Apellidos"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Telefono: <input class="form-control" type="text" name="txtTelefono" placeholder="Telefono"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Domicilio: <input class="form-control" type="text" name="txtDomicilio" placeholder="Domicilio"><br>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarAltaCliente" value="Dar de alta" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO MODIFICAR CLIENTE-->
+
+    <div class="container mt-4" id="cargarCliente">
+        <form name="frmCargarCliente">
+            <fieldset>
+                <legend>Cargar cliente</legend>
+                <div class="row">
+                    <div class="col-12">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnCargarCliente" value="Cargar cliente" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container mt-4" id="modificarCliente">
+        <form name="frmModificarCliente">
+            <fieldset>
+                <legend>Datos del cliente</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        Nombre: <input class="form-control" type="text" name="txtNombre" placeholder="Nombre"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Apellidos: <input class="form-control" type="text" name="txtApellidos" placeholder="Apellidos"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI" disabled><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Telefono: <input class="form-control" type="text" name="txtTelefono" placeholder="Telefono"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Domicilio: <input class="form-control" type="text" name="txtDomicilio" placeholder="Domicilio"><br>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarModificarCliente" value="Modificar cliente" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO ELIMINAR CLIENTE-->
+
+    <div class="container mt-4" id="bajaCliente">
+        <form name="frmBajaCliente">
+            <fieldset>
+                <legend>Dar de baja cliente</legend>
+                <div class="row">
+                    <div class="col-12">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnAceptarBajaCliente" value="Dar de baja" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO ALQUILAR-->
+
+    <div class="container mt-4" id="alquilar">
+        <form name="frmAlquilar">
+            <fieldset>
+                <legend>Alquilar</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        ID Alquiler: <input class="form-control" type="text" name="txtId" placeholder="ID Alquiler"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        Fecha Inicio: <input class="form-control" type="date" name="fechaInicio"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Fecha Fin: <input class="form-control" type="date" name="fechaFin"><br>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarAlquiler" value="Alquilar" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO MODIFICAR ALQUILER-->
+
+    <div class="container mt-4" id="modificarAlquiler">
+        <form name="frmCargarAlquiler">
+            <fieldset>
+                <legend>Cargar Alquiler</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Alquiler: <input class="form-control" type="text" name="txtID" placeholder="ID Alquiler"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnCargarAlquiler" value="Cargar alquiler" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container mt-4" id="modificarAlquiler">
+        <form name="frmModificarAlquiler">
+            <fieldset>
+                <legend>Datos del Alquiler</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        ID Alquiler: <input class="form-control" type="text" name="txtId" placeholder="ID Alquiler" disabled><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        Fecha Inicio: <input class="form-control" type="date" name="fechaInicio"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Fecha Fin: <input class="form-control" type="date" name="fechaFin"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnAceptarModificarAlquiler" value="Modificar alquiler" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO ELIMINAR ALQUILER-->
+
+    <div class="container mt-4" id="eliminarAlquiler">
+        <form name="frmEliminarAlquiler">
+            <fieldset>
+                <legend>Eliminar alquiler</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Alquiler: <input class="form-control" type="text" name="txtID" placeholder="ID Alquiler"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnEliminarAlquiler" value="Eliminar alquiler" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO AGREGAR VIVIENDA-->
+
+    <div class="container mt-4" id="agregarVivienda">
+        <form name="frmAgregarVivienda">
+            <fieldset>
+                <legend>Agregar vivienda</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        ID Vivienda: <input class="form-control" type="text" name="txtId" placeholder="ID Vivienda"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Precio: <input class="form-control" type="text" name="txtPrecio" placeholder="Precio"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-10">
+                        Dirección: <input class="form-control" type="text" name="txtDireccion" placeholder="Direccion"><br>
+                    </div>
+                    <div class="col-12 col-md-2"><br/>
+                        <input type="checkbox" class="form-check-input" name="chkClimatizado">Climatizado<br/>
+                        <input type="checkbox" class="form-check-input" name="chkDisponible">Disponible<br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-9">
+                        Exterior: <input class="form-control" type="text" name="txtExterior" placeholder="Direccion"><br>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        Nº Habitaciones: <input class="form-control" type="text" name="txtHabitaciones" placeholder="Nº Habitaciones"><br>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-12">
+                        Descripcion: <textarea class="form-control" name="txtDescripcion" rows="3"></textarea><br/>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarVivienda" value="Agregar vivienda" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO MODIFICAR VIVIENDA-->
+
+    <div class="container mt-4" id="cargarVivienda">
+        <form name="frmCargarVivienda">
+            <fieldset>
+                <legend>Cargar Vivienda</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Vivienda: <input class="form-control" type="text" name="txtID" placeholder="ID Vivienda"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnCargarVivienda" value="Cargar Vivienda" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container mt-4" id="modificarVivienda">
+        <form name="frmModificarVivienda">
+            <fieldset>
+                <legend>Datos de la vivienda</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        ID Vivienda: <input class="form-control" type="text" name="txtId" placeholder="ID Vivienda" disabled><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Precio: <input class="form-control" type="text" name="txtPrecio" placeholder="Precio"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-10">
+                        Dirección: <input class="form-control" type="text" name="txtDireccion" placeholder="Direccion"><br>
+                    </div>
+                    <div class="col-12 col-md-2"><br/>
+                        <input type="checkbox" class="form-check-input" name="chkClimatizado">Climatizado<br/>
+                        <input type="checkbox" class="form-check-input" name="chkDisponible">Disponible<br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-9">
+                        Exterior: <input class="form-control" type="text" name="txtExterior" placeholder="Direccion"><br>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        Nº Habitaciones: <input class="form-control" type="text" name="txtHabitaciones" placeholder="Nº Habitaciones"><br>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-12">
+                        Descripcion: <textarea class="form-control" name="txtDescripcion" rows="3"></textarea><br/>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnModificarVivienda" value="Modificar vivienda" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO ELIMINAR VIVIENDA-->
+
+    <div class="container mt-4" id="eliminarVivienda">
+        <form name="frmEliminarAlquiler">
+            <fieldset>
+                <legend>Eliminar vivienda</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Vivienda: <input class="form-control" type="text" name="txtID" placeholder="ID Vivienda"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnEliminarVivienda" value="Eliminar vivienda" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO CREAR CITA-->
+
+    <div class="container mt-4" id="asignarCita">
+        <form name="frmAsignarCita">
+            <fieldset>
+                <legend>Asignar cita</legend>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        ID Cita: <input class="form-control" type="text" name="txtId" placeholder="ID Cita"><br>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        Fecha: <input class="form-control" type="date" name="fecha"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        Hora: <input class="form-control" type="text" name="txtHora" placeholder="Hora"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DNI Cliente: <input class="form-control" type="text" name="txtDNICliente" placeholder="DNI Cliente"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DNI Empleado: <input class="form-control" type="text" name="txtDNI" placeholder="DNI Empleado"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Descripcion: <textarea class="form-control" name="txtDescripcion" rows="3"></textarea><br/>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarCita" value="Asignar cita" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO MODIFICAR CITA-->
+
+    <div class="container mt-4" id="cargarCita">
+        <form name="frmCargarCita">
+            <fieldset>
+                <legend>Cargar Cita</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Cita: <input class="form-control" type="text" name="txtID" placeholder="ID Cita"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnCargarCita" value="Cargar cita" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container mt-4" id="modificarCita">
+        <form name="frmModificarCita">
+            <fieldset>
+                <legend>Modificar cita</legend>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        ID Cita: <input class="form-control" type="text" name="txtId" placeholder="ID Cita" disabled><br>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        Fecha: <input class="form-control" type="date" name="fecha"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        Hora: <input class="form-control" type="text" name="txtHora" placeholder="Hora"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DNI Cliente: <input class="form-control" type="text" name="txtDNICliente" placeholder="DNI Cliente"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DNI Empleado: <input class="form-control" type="text" name="txtDNI" placeholder="DNI Empleado"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Descripcion: <textarea class="form-control" name="txtDescripcion" rows="3"></textarea><br/>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnModificarCita" value="Modificar cita" />
+            </fieldset>
+        </form>
+    </div>
+
+    <!--FORMULARIO ELIMINAR CITA-->
+
+    <div class="container mt-4" id="eliminarCita">
+        <form name="frmEliminarCita">
+            <fieldset>
+                <legend>Eliminar cita</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Cita: <input class="form-control" type="text" name="txtID" placeholder="ID Cita"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnEliminarCita" value="Eliminar cita" />
+            </fieldset>
+        </form>
+    </div>
 
 
+    <!--FORMULARIO CONTRATAR EMPLEADOS-->
+    <!--FORMULARIO MODIFICAR EMPLEADOS-->
+    <!--FORMULARIO DESPEDIR EMPLEADOS-->
 
 
+    <!--FORMULARIO ASIGNAR LIMPIEZA-->
+    <!--FORMULARIO MODIFICAR LIMPIEZA-->
+    <!--FORMULARIO ELIMINAR LIMPIEZA-->
 
 
     <!--Codigo js, clases-->
@@ -37,4 +516,5 @@
         crossorigin="anonymous"></script>
 
 </body>
+
 </html>
