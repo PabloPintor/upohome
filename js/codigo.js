@@ -1,4 +1,2 @@
-"use strict";
-
-var UPOHOME = new UPOHOME();
+var oUPOHOME = new UPOHOME();
 

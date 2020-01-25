@@ -28,69 +28,69 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Cliente
                     </a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Dar de alta</a>
-                        <a class="dropdown-item" href="">Modificar cliente</a>
-                        <a class="dropdown-item" href="">Dar de baja</a>
+                        <a class="dropdown-item" id="btnMenuDarAlta">Dar de alta</a>
+                        <a class="dropdown-item" id="btnMenuModCliente">Modificar cliente</a>
+                        <a class="dropdown-item" id="btnMenuDarBaja">Dar de baja</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Alquiler
                     </a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Alquilar</a>
-                        <a class="dropdown-item" href="">Modificar alquiler</a>
-                        <a class="dropdown-item" href="">Eliminar alquiler</a>
+                        <a class="dropdown-item" id="btnMenuAlquilar">Alquilar</a>
+                        <a class="dropdown-item" id="btnMenuModAlquier">Modificar alquiler</a>
+                        <a class="dropdown-item" id="btnMenuElimiarAlquiler">Eliminar alquiler</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Vivienda
                     </a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Agregar vivienda</a>
-                        <a class="dropdown-item" href="">Modificar vivienda</a>
-                        <a class="dropdown-item" href="">Eliminar vivienda</a>
+                        <a class="dropdown-item" id="btnMenuAgregarVivienda">Agregar vivienda</a>
+                        <a class="dropdown-item" id="btnMenuModVivienda">Modificar vivienda</a>
+                        <a class="dropdown-item" id="btnMenuEliminarVivienda">Eliminar vivienda</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Citas
                     </a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Crear cita</a>
-                        <a class="dropdown-item" href="">Modificar cita</a>
-                        <a class="dropdown-item" href="">Eliminar cita</a>
+                        <a class="dropdown-item" id="btnMenuCrearCita">Crear cita</a>
+                        <a class="dropdown-item" id="btnMenuModCita">Modificar cita</a>
+                        <a class="dropdown-item" id="btnMenuEliminarCita">Eliminar cita</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Empleados
                     </a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Contratar empleado</a>
-                        <a class="dropdown-item" href="">Modificar empleado</a>
-                        <a class="dropdown-item" href="">Despedir empleado</a>
+                        <a class="dropdown-item" id="btnMenuContratarEmpleado">Contratar empleado</a>
+                        <a class="dropdown-item" id="btnMenuModEmpleado">Modificar empleado</a>
+                        <a class="dropdown-item" id="btnMenuDespedirEmpleado">Despedir empleado</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Limpieza
                     </a>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Asignar limpieza</a>
-                        <a class="dropdown-item" href="">Modificar limpieza</a>
-                        <a class="dropdown-item" href="">Eliminar limpieza</a>
+                        <a class="dropdown-item" id="btnMenuAsignarLimpieza">Asignar limpieza</a>
+                        <a class="dropdown-item" id="btnMenuModLimpieza">Modificar limpieza</a>
+                        <a class="dropdown-item" id="btnMenuEliminarLimpieza">Eliminar limpieza</a>
                     </div>
                 </li>
             </ul>
@@ -98,7 +98,7 @@
     </nav>
 
     <!--FORMULARIO ALTA CLIENTE-->
-    <div class="container mt-4" id="altaCliente">
+    <div class="container mt-4 divFormulario" id="altaCliente">
         <form name="frmAltaCliente">
             <fieldset>
                 <legend>Alta de Cliente</legend>
@@ -131,7 +131,7 @@
 
     <!--FORMULARIO MODIFICAR CLIENTE-->
 
-    <div class="container mt-4" id="cargarCliente">
+    <div class="container mt-4 divFormulario" id="cargarCliente">
         <form name="frmCargarCliente">
             <fieldset>
                 <legend>Cargar cliente</legend>
@@ -145,7 +145,7 @@
         </form>
     </div>
 
-    <div class="container mt-4" id="modificarCliente">
+    <div class="container mt-4 divFormulario" id="modificarCliente">
         <form name="frmModificarCliente">
             <fieldset>
                 <legend>Datos del cliente</legend>
@@ -178,7 +178,7 @@
 
     <!--FORMULARIO ELIMINAR CLIENTE-->
 
-    <div class="container mt-4" id="bajaCliente">
+    <div class="container mt-4 divFormulario" id="bajaCliente">
         <form name="frmBajaCliente">
             <fieldset>
                 <legend>Dar de baja cliente</legend>
@@ -194,7 +194,7 @@
 
     <!--FORMULARIO ALQUILAR-->
 
-    <div class="container mt-4" id="alquilar">
+    <div class="container mt-4 divFormulario" id="alquilar">
         <form name="frmAlquilar">
             <fieldset>
                 <legend>Alquilar</legend>
@@ -222,7 +222,7 @@
 
     <!--FORMULARIO MODIFICAR ALQUILER-->
 
-    <div class="container mt-4" id="modificarAlquiler">
+    <div class="container mt-4 divFormulario" id="cargarAlquiler">
         <form name="frmCargarAlquiler">
             <fieldset>
                 <legend>Cargar Alquiler</legend>
@@ -236,7 +236,7 @@
         </form>
     </div>
 
-    <div class="container mt-4" id="modificarAlquiler">
+    <div class="container mt-4 divFormulario" id="modificarAlquiler">
         <form name="frmModificarAlquiler">
             <fieldset>
                 <legend>Datos del Alquiler</legend>
@@ -263,7 +263,7 @@
 
     <!--FORMULARIO ELIMINAR ALQUILER-->
 
-    <div class="container mt-4" id="eliminarAlquiler">
+    <div class="container mt-4 divFormulario" id="eliminarAlquiler">
         <form name="frmEliminarAlquiler">
             <fieldset>
                 <legend>Eliminar alquiler</legend>
@@ -279,7 +279,7 @@
 
     <!--FORMULARIO AGREGAR VIVIENDA-->
 
-    <div class="container mt-4" id="agregarVivienda">
+    <div class="container mt-4 divFormulario" id="agregarVivienda">
         <form name="frmAgregarVivienda">
             <fieldset>
                 <legend>Agregar vivienda</legend>
@@ -321,7 +321,7 @@
 
     <!--FORMULARIO MODIFICAR VIVIENDA-->
 
-    <div class="container mt-4" id="cargarVivienda">
+    <div class="container mt-4 divFormulario" id="cargarVivienda">
         <form name="frmCargarVivienda">
             <fieldset>
                 <legend>Cargar Vivienda</legend>
@@ -335,7 +335,7 @@
         </form>
     </div>
 
-    <div class="container mt-4" id="modificarVivienda">
+    <div class="container mt-4 divFormulario" id="modificarVivienda">
         <form name="frmModificarVivienda">
             <fieldset>
                 <legend>Datos de la vivienda</legend>
@@ -377,7 +377,7 @@
 
     <!--FORMULARIO ELIMINAR VIVIENDA-->
 
-    <div class="container mt-4" id="eliminarVivienda">
+    <div class="container mt-4 divFormulario" id="eliminarVivienda">
         <form name="frmEliminarAlquiler">
             <fieldset>
                 <legend>Eliminar vivienda</legend>
@@ -393,7 +393,7 @@
 
     <!--FORMULARIO CREAR CITA-->
 
-    <div class="container mt-4" id="asignarCita">
+    <div class="container mt-4 divFormulario" id="asignarCita">
         <form name="frmAsignarCita">
             <fieldset>
                 <legend>Asignar cita</legend>
@@ -427,7 +427,7 @@
 
     <!--FORMULARIO MODIFICAR CITA-->
 
-    <div class="container mt-4" id="cargarCita">
+    <div class="container mt-4 divFormulario" id="cargarCita">
         <form name="frmCargarCita">
             <fieldset>
                 <legend>Cargar Cita</legend>
@@ -441,7 +441,7 @@
         </form>
     </div>
 
-    <div class="container mt-4" id="modificarCita">
+    <div class="container mt-4 divFormulario" id="modificarCita">
         <form name="frmModificarCita">
             <fieldset>
                 <legend>Modificar cita</legend>
@@ -475,7 +475,7 @@
 
     <!--FORMULARIO ELIMINAR CITA-->
 
-    <div class="container mt-4" id="eliminarCita">
+    <div class="container mt-4 divFormulario" id="eliminarCita">
         <form name="frmEliminarCita">
             <fieldset>
                 <legend>Eliminar cita</legend>
@@ -489,20 +489,207 @@
         </form>
     </div>
 
-
     <!--FORMULARIO CONTRATAR EMPLEADOS-->
+
+    <div class="container mt-4 divFormulario" id="contratarEmpleado">
+        <form name="frmcontratarEmpleado">
+            <fieldset>
+                <legend>Contratar Empleado</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        Nombre: <input class="form-control" type="text" name="txtNombre" placeholder="Nombre"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Apellidos: <input class="form-control" type="text" name="txtApellidos" placeholder="Apellidos"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Telefono: <input class="form-control" type="text" name="txtTelefono" placeholder="Telefono"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-10">
+                        Domicilio: <input class="form-control" type="text" name="txtDomicilio" placeholder="Domicilio"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        Sueldo: <input class="form-control" type="text" name="txtSueldo" placeholder="Sueldo"><br>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarContratarEmpleado" value="Contratar" />
+            </fieldset>
+        </form>
+    </div>
+
     <!--FORMULARIO MODIFICAR EMPLEADOS-->
+
+    <div class="container mt-4 divFormulario" id="cargarEmpleado">
+        <form name="frmCargarEmpleado">
+            <fieldset>
+                <legend>Cargar empleado</legend>
+                <div class="row">
+                    <div class="col-12">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnCargarEmpleado" value="Cargar empleado" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container mt-4 divFormulario" id="modificarEmpleado">
+        <form name="frmModificarEmpleado">
+            <fieldset>
+                <legend>Modificar Empleado</legend>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        Nombre: <input class="form-control" type="text" name="txtNombre" placeholder="Nombre"><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Apellidos: <input class="form-control" type="text" name="txtApellidos" placeholder="Apellidos"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI" disabled><br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        Telefono: <input class="form-control" type="text" name="txtTelefono" placeholder="Telefono"><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-10">
+                        Domicilio: <input class="form-control" type="text" name="txtDomicilio" placeholder="Domicilio"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        Sueldo: <input class="form-control" type="text" name="txtSueldo" placeholder="Sueldo"><br>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarModificarEmpleado" value="Modificar" />
+            </fieldset>
+        </form>
+    </div>
+
     <!--FORMULARIO DESPEDIR EMPLEADOS-->
 
+    <div class="container mt-4 divFormulario" id="despedirEmpleado">
+        <form name="frmDespedirEmpleado">
+            <fieldset>
+                <legend>Despedir empleado</legend>
+                <div class="row">
+                    <div class="col-12">
+                        DNI: <input class="form-control" type="text" name="txtDNI" placeholder="DNI"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnAceptarBajaCliente" value="Despedir" />
+            </fieldset>
+        </form>
+    </div>
 
     <!--FORMULARIO ASIGNAR LIMPIEZA-->
+
+    <div class="container mt-4 divFormulario" id="asignarLimpieza">
+        <form name="frmAsignarLimpieza">
+            <fieldset>
+                <legend>Asignar limpieza</legend>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        ID Limpieza: <input class="form-control" type="text" name="txtId" placeholder="ID Limpieza"><br>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        Fecha: <input class="form-control" type="date" name="fecha"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        Hora: <input class="form-control" type="text" name="txtHora" placeholder="Hora"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DNI Empleado: <input class="form-control" type="text" name="txtDNI" placeholder="DNI Empleado"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        ID Vivienda: <input class="form-control" type="text" name="txtIDVivienda" placeholder="ID Vivienda"><br>
+                    </div>
+                </div>
+                <div class="row ml-4 mb-2">
+                    <input type="checkbox" class="form-check-input" name="chkFinalizado">Finalizado<br/>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarLimpieza" value="Asignar limpieza" />
+            </fieldset>
+        </form>
+    </div>
+
     <!--FORMULARIO MODIFICAR LIMPIEZA-->
+
+    <div class="container mt-4 divFormulario" id="cargarLimpieza">
+        <form name="frmCargarLimpieza">
+            <fieldset>
+                <legend>Cargar Limpieza</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Limpieza: <input class="form-control" type="text" name="txtID" placeholder="ID Limpieza"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnCargarLimpieza" value="Cargar limpieza" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container mt-4 divFormulario" id="modificarLimpieza">
+        <form name="frmModificarLimpieza">
+            <fieldset>
+                <legend>Asignar limpieza</legend>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        ID Limpieza: <input class="form-control" type="text" name="txtId" placeholder="ID Limpieza" disabled><br>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        Fecha: <input class="form-control" type="date" name="fecha"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        Hora: <input class="form-control" type="text" name="txtHora" placeholder="Hora"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        DNI Empleado: <input class="form-control" type="text" name="txtDNI" placeholder="DNI Empleado"><br>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        ID Vivienda: <input class="form-control" type="text" name="txtIDVivienda" placeholder="ID Vivienda"><br>
+                    </div>
+                </div>
+                <div class="row ml-4 mb-2">
+                    <input type="checkbox" class="form-check-input" name="chkFinalizado">Finalizado<br/>
+                </div>
+
+                <input type="button" class="btn btn-primary" name="btnAceptarLimpieza" value="Modificar limpieza" />
+            </fieldset>
+        </form>
+    </div>
+
     <!--FORMULARIO ELIMINAR LIMPIEZA-->
+
+    <div class="container mt-4 divFormulario" id="eliminarLimpieza">
+        <form name="frmEliminarLimpieza">
+            <fieldset>
+                <legend>Eliminar limpieza</legend>
+                <div class="row">
+                    <div class="col-12">
+                        ID Limpieza: <input class="form-control" type="text" name="txtID" placeholder="ID Limpieza"><br>
+                    </div>
+                </div>
+                <input type="button" class="btn btn-primary" name="btnAceptarEliminarLimpieza" value="Eliminar" />
+            </fieldset>
+        </form>
+    </div>
 
 
     <!--Codigo js, clases-->
     <script src="../js/objetos.js"></script>
     <script src="../js/codigo.js"></script>
+    <script src="../js/codigo_interfaz.js"></script>
 
     <!--Bootstrap, jquery-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

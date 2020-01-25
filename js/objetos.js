@@ -1,5 +1,3 @@
-"use strict";
-
 //clase contenedora  UPOHOME
 class UPOHOME{
 
@@ -80,7 +78,8 @@ class Vivienda{
 
 class Cita{
 
-    constructor(fecha, hora, descripcion){
+    constructor(idCita, fecha, hora, descripcion){
+        this.idCita = idCita;               //int
         this.fecha = fecha;                 //date
         this.hora = hora;                   //string
         this.descripcion = descripcion;     //string
@@ -111,7 +110,8 @@ class Empleado{
 
 class Limpieza{
 
-    constructor(fecha, hora, finalizado){
+    constructor(idLimpieza, fecha, hora, finalizado){
+        this.idLimpieza = idLimpieza    //int
         this.fecha = fecha;             //Date
         this.hora = hora;               //string
         this.finalizado = finalizado;   //boolean
