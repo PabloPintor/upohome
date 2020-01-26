@@ -112,14 +112,6 @@ document.getElementById("btnMenuEliminarLimpieza").addEventListener("click", fun
 
 //BOTONES MODIFICAR
 
-//CLIENTE
-frmCargarCliente.btnCargarCliente.addEventListener("click", function() {
-    let dni = frmCargarCliente.txtDNI.value.trim();
-    document.querySelector("#modificarCliente").style.display = "block";
-    frmModificarCliente.txtDNI.value = dni;
-}, false);
-
-
 //ALQUILER
 
 frmCargarAlquiler.btnCargarAlquiler.addEventListener("click", function() {

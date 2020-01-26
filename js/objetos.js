@@ -12,9 +12,61 @@ class UPOHOME{
     }
 
     //metodos
+    altaCliente(oCliente) {
+        let sMensaje = "";
+
+        if (this.arrayClientes.filter(cliente => cliente.dni == oCliente.dni).length == 0) {
+            this.arrayClientes.push(oCliente);
+            sMensaje = "Alta cliente OK";
+        } else {
+            sMensaje = "El cliente ya estaba dado de alta";
+        }
+
+        return sMensaje;
+    }
+    buscarCliente(sDNI){
+        let resultado = null;
+
+        this.arrayClientes.forEach(cliente => {
+            if (cliente.dni == sDNI) {
+                resultado = cliente;
+            }
+        });
+
+        return resultado;
+    }
+    modificarCliente(sNombre, sApellidos, sDNI, iTelf, sDomicilio){
+        let sMensaje = "No se ha podido modificar el cliente.";
+
+        this.arrayClientes.forEach(cliente => {
+            if (cliente.dni == sDNI) {
+                cliente.nombre = sNombre;
+                cliente.apellidos = sApellidos;
+                cliente.telefono = iTelf;
+                cliente.domicilio = sDomicilio;
+
+                sMensaje = "Cliente modificado correctamente.";
+            }    
+        });
+
+        return sMensaje;
+    }
+    borrarCliente(sDni){
+        let sMensaje = "No se ha podido borrar el cliente.";
+        let oCliente = oUPOHOME.buscarCliente(sDni);
+        if(oCliente != null) {
+            let index = this.arrayClientes.indexOf(oCliente);
+            if (index > -1) {
+                this.arrayClientes.splice(index, 1);
+                sMensaje = "Cliente eliminado correctamente.";
+            }
+        }
+        
+        return sMensaje;
+    }
 
 }
-
+//----------------------------------------------------------------------------//
 class Cliente{
     
     constructor(nombre, apellidos, dni, telefono, domicilio, esPropierario){
@@ -35,6 +87,8 @@ class Alquiler{
 
     constructor(idAlquiler, fechaInicio, fechaFin){
         this.idAlquiler = idAlquiler;       //int
+        this.dniCliente = dniCliente;       //string (Añadido)
+        this.idVivienda = idVivienda;       //string (Añadido)
         this.fechaInicio = fechaInicio;     //Date
         this.fechaFin = fechaFin;           //Date
     }
@@ -58,7 +112,7 @@ class Imagen{
 
 class Vivienda{
 
-    constructor(idVivienda, direccion, precioAlquiler, estadoDisponibilidad, imgPrincipal, numHabitaciones, descripcion, exterior, climatizacion){
+    constructor(idVivienda, direccion, precioAlquiler, estadoDisponibilidad, imgPrincipal, numHabitaciones, descripcion, exterior, climatizacion, arrayViviendas){
         this.idVivienda = idVivienda;                       //int
         this.direccion = direccion;                         //string
         this.precioAlquiler = precioAlquiler;               //float
@@ -68,6 +122,7 @@ class Vivienda{
         this.descripcion = descripcion;                     //string
         this.exterior = exterior;                           //string
         this.climatizacion = climatizacion;                 //boolean
+        this.arrayViviendas = arrayViviendas;               //array (Añadido)
     }
 
     //metodos
@@ -110,8 +165,10 @@ class Empleado{
 
 class Limpieza{
 
-    constructor(idLimpieza, fecha, hora, finalizado){
+    constructor(idLimpieza, idEmpleado, idVivienda, fecha, hora, finalizado){
         this.idLimpieza = idLimpieza    //int
+        this.idEmpleado = idEmpleado;   //int (Añadido)
+        this.idVivienda = idVivienda;   //int (Añadido)
         this.fecha = fecha;             //Date
         this.hora = hora;               //string
         this.finalizado = finalizado;   //boolean
