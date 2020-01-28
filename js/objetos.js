@@ -64,6 +64,60 @@ class UPOHOME{
         
         return sMensaje;
     }
+    agregarVivienda(oVivienda) {
+        let sMensaje = "";
+
+        if (this.arrayViviendas.filter(vivienda => vivienda.idVivienda == oVivienda.idVivienda).length == 0) {
+            this.arrayViviendas.push(oVivienda);
+            sMensaje = "Alta vivienda OK";
+        } else {
+            sMensaje = "La vivienda ya estaba dado de alta";
+        }
+
+        return sMensaje;
+    }
+    buscarVivienda(idVivienda) {
+        let resultado = null;
+
+        this.arrayViviendas.forEach(vivienda => {
+            if (vivienda.idVivienda == idVivienda) {
+                resultado = vivienda;
+            }
+        });
+
+        return resultado;
+    }
+    modificarVivienda(idVivienda, direccion, estadoDisponibilidad, numHabitaciones, descripcion, exterior, climatizacion){
+        let sMensaje = "No se ha podido modificar la vivienda.";
+
+        this.arrayViviendas.forEach(vivienda => {
+            if (vivienda.idVivienda == idVivienda) {
+                vivienda.direccion = direccion;
+                vivienda.estadoDisponibilidad = estadoDisponibilidad;
+                vivienda.numHabitaciones = numHabitaciones;
+                vivienda.descripcion = descripcion;
+                vivienda.exterior = exterior;
+                vivienda.climatizacion = climatizacion;
+
+                sMensaje = "Vivienda modificada correctamente.";
+            }    
+        });
+
+        return sMensaje;
+    }
+    borrarVivivenda(idVivienda){
+        let sMensaje = "No se ha podido borrar la vivienda.";
+        let oVivienda = oUPOHOME.buscarCliente(idVivienda);
+        if(oVivienda != null) {
+            let index = this.arrayViviendas.indexOf(oVivienda);
+            if (index > -1) {
+                this.arrayViviendas.splice(index, 1);
+                sMensaje = "Vivienda eliminada correctamente.";
+            }
+        }
+        
+        return sMensaje;
+    }
 
 }
 //----------------------------------------------------------------------------//
@@ -112,7 +166,7 @@ class Imagen{
 
 class Vivienda{
 
-    constructor(idVivienda, direccion, precioAlquiler, estadoDisponibilidad, imgPrincipal, numHabitaciones, descripcion, exterior, climatizacion, arrayViviendas){
+    constructor(idVivienda, direccion, precioAlquiler, estadoDisponibilidad, imgPrincipal, numHabitaciones, descripcion, exterior, climatizacion, arrayImagen){
         this.idVivienda = idVivienda;                       //int
         this.direccion = direccion;                         //string
         this.precioAlquiler = precioAlquiler;               //float
@@ -122,7 +176,7 @@ class Vivienda{
         this.descripcion = descripcion;                     //string
         this.exterior = exterior;                           //string
         this.climatizacion = climatizacion;                 //boolean
-        this.arrayViviendas = arrayViviendas;               //array (Añadido)
+        this.arrayImagen = arrayImagen;               //array (Añadido)
     }
 
     //metodos

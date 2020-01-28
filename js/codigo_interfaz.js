@@ -111,25 +111,6 @@ document.getElementById("btnMenuEliminarLimpieza").addEventListener("click", fun
 
 
 //BOTONES MODIFICAR
-
-//ALQUILER
-
-frmCargarAlquiler.btnCargarAlquiler.addEventListener("click", function() {
-    let idAlquiler = frmCargarAlquiler.txtID.value.trim();
-    document.querySelector("#modificarAlquiler").style.display = "block";
-    frmModificarAlquiler.txtId.value = idAlquiler;
-}, false);
-
-
-//VIVIENDA
-
-frmCargarVivienda.btnCargarVivienda.addEventListener("click", function() {
-    let idVivienda = frmCargarVivienda.txtID.value.trim();
-    document.querySelector("#modificarVivienda").style.display = "block";
-    frmModificarVivienda.txtId.value = idVivienda;
-}, false);
-
-
 //CITAS
 
 frmCargarCita.btnCargarCita.addEventListener("click", function() {
