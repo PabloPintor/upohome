@@ -6,12 +6,21 @@ frmAltaCliente.btnAceptarAltaCliente.addEventListener("click", altaCliente,false
 frmCargarCliente.btnCargarCliente.addEventListener("click", cargarCliente, false);
 frmModificarCliente.btnAceptarModificarCliente.addEventListener("click", modificarCliente, false);
 frmBajaCliente.btnAceptarBajaCliente.addEventListener("click", borrarCliente, false);
+//Alquiler
+
 //Vivienda
 frmAgregarVivienda.btnAceptarVivienda.addEventListener("click", agregarVivienda, false);
 frmCargarVivienda.btnCargarVivienda.addEventListener("click", cargarVivienda, false);
 frmModificarVivienda.btnModificarVivienda.addEventListener("click", modificarVivienda, false);
 frmEliminarVivienda.btnEliminarVivienda.addEventListener("click", borrarVivienda, false);
+//Citas
 
+//Empleados
+frmcontratarEmpleado.btnAceptarContratarEmpleado.addEventListener("click", contratarEmpleado, false);
+frmCargarEmpleado.btnCargarEmpleado.addEventListener("click", cargarEmpleado, false);
+frmModificarEmpleado.btnAceptarModificarEmpleado.addEventListener("click", modificarEmpleado, false);
+frmDespedirEmpleado.btnAceptarBajaEmpleado.addEventListener("click", borrarEmpleado, false);
+//Limpieza
 //-----------------------------------------------------------------------------------------------//
 //Datos de prueba
     oUPOHOME.altaCliente(new Cliente("Manuel Esteban", "Rodríguez Gómez", "1", "608995074", "Larra 29", false));
@@ -20,6 +29,7 @@ frmEliminarVivienda.btnEliminarVivienda.addEventListener("click", borrarVivienda
 
     oUPOHOME.agregarVivienda(new Vivienda("1", "Larra", "25000", true, "", "4", "aaa bbb ccc", "Roble", false, []));
 //-----------------------------------------------------------------------------------------------//
+//CLIENTE
 function altaCliente(){
     // Recoger valores del formulario
     let sNombre = frmAltaCliente.txtNombre.value.trim();
@@ -102,6 +112,7 @@ function borrarCliente(){
     }
 }
 //-----------------------------------------------------------------------------------------------//
+//VIVIENDA
 function agregarVivienda(){
     // Recoger valores del formulario
     let idVivienda = parseInt(frmAgregarVivienda.txtId.value.trim());
@@ -180,7 +191,6 @@ function modificarVivienda() {
 }
 function borrarVivienda() {
     let idVivienda = parseInt(frmEliminarVivienda.txtID.value);
-    console.log(idVivienda);
     
     if(idVivienda == ""){
         alert("Debes rellenar todos los datos y debe estar correctamente");
@@ -191,6 +201,92 @@ function borrarVivienda() {
         alert(sMensaje);
         if(sMensaje == "Vivienda eliminada correctamente."){
             document.querySelector("form[name='frmEliminarAlquiler']").reset();
+            ocultarFormularios();   
+        }
+        
+    }
+}
+//-----------------------------------------------------------------------------------------------//
+//EMPLEADO
+function contratarEmpleado(){
+    // Recoger valores del formulario
+    let sNombre = frmcontratarEmpleado.txtNombre.value.trim();
+    let sApellidos = frmcontratarEmpleado.txtApellidos.value.trim();
+    let sDNI = frmcontratarEmpleado.txtDNI.value.trim();
+    let iTelf = parseInt(frmcontratarEmpleado.txtTelefono.value);
+    let sDomicilio = frmcontratarEmpleado.txtDomicilio.value.trim();
+    let fSueldo = parseFloat(frmcontratarEmpleado.txtSueldo.value);
+
+    if(sNombre == "" || sApellidos == "" || sDNI == "" || isNaN(iTelf) || sDomicilio == "" || isNaN(fSueldo)){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+        
+    }else{
+        // Creamos el objeto Cliente
+        let oEmpleado = new Empleado(sNombre, sApellidos, sDNI, iTelf, fSueldo,sDomicilio);
+
+        // Alta de Cliente en el UPOHome
+        let sMensaje = oUPOHOME.altaEmpleado(oEmpleado);
+
+        alert(sMensaje);
+        document.querySelector("form[name='frmcontratarEmpleado']").reset();
+
+        ocultarFormularios();   
+    }
+}
+function cargarEmpleado() {
+    //Comprobamos si existe
+    let sDni = frmCargarEmpleado.txtDNI.value.trim();
+    let oEmpleado = oUPOHOME.buscarEmpleado(sDni);
+    if(oEmpleado == null){
+        alert("No se encuentran datos del Empleado.");
+    }else{
+        document.querySelector("#modificarEmpleado").style.display = "block";
+        frmModificarEmpleado.txtNombre.value = oEmpleado.nombre;
+        frmModificarEmpleado.txtApellidos.value = oEmpleado.apellidos;
+        frmModificarEmpleado.txtDNI.value = sDni;
+        frmModificarEmpleado.txtTelefono.value = oEmpleado.telefono;
+        frmModificarEmpleado.txtDomicilio.value = oEmpleado.domicilio;
+        frmModificarEmpleado.txtSueldo.value = oEmpleado.salario;
+    }
+
+
+} 
+function modificarEmpleado() {
+    let sNombre = frmModificarEmpleado.txtNombre.value.trim();
+    let sApellidos = frmModificarEmpleado.txtApellidos.value.trim();
+    let sDNI = frmModificarEmpleado.txtDNI.value.trim();
+    let iTelf = parseInt(frmModificarEmpleado.txtTelefono.value);
+    let sDomicilio = frmModificarEmpleado.txtDomicilio.value.trim();
+    let fSueldo = parseFloat(frmModificarEmpleado.txtSueldo.value);
+
+    if(sNombre == "" || sApellidos == "" || sDNI == "" || isNaN(iTelf) || sDomicilio == "" || isNaN(fSueldo) ){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+        
+    }else{
+        let sMensaje = oUPOHOME.modificarEmpleado(sNombre, sApellidos, sDNI, iTelf, fSueldo, sDomicilio);
+
+        alert(sMensaje);
+        if(sMensaje == "Empleado modificado correctamente."){ 
+            document.querySelector("form[name='frmCargarEmpleado']").reset();
+            document.querySelector("form[name='frmModificarEmpleado']").reset();
+
+            ocultarFormularios();
+        }
+        
+    }
+} 
+function borrarEmpleado () {
+    let sDni = frmDespedirEmpleado.txtDNI.value.trim();
+
+    if(sDni == ""){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        
+        let sMensaje = oUPOHOME.borrarEmpleado(sDni);
+
+        alert(sMensaje);
+        if(sMensaje == "Empleado modificado correctamente."){
+            document.querySelector("form[name='frmDespedirEmpleado']").reset();
             ocultarFormularios();   
         }
         

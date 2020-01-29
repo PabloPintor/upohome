@@ -120,15 +120,6 @@ frmCargarCita.btnCargarCita.addEventListener("click", function() {
 }, false);
 
 
-//EMPLEADOS
-
-frmCargarEmpleado.btnCargarEmpleado.addEventListener("click", function() {
-    let dni = frmCargarEmpleado.txtDNI.value.trim();
-    document.querySelector("#modificarEmpleado").style.display = "block";
-    frmModificarEmpleado.txtDNI.value = dni;
-}, false);
-
-
 //LIMPIEZA
 
 frmCargarLimpieza.btnCargarLimpieza.addEventListener("click", function() {

@@ -64,6 +64,7 @@ class UPOHOME{
         
         return sMensaje;
     }
+    //--//
     agregarVivienda(oVivienda) {
         let sMensaje = "";
 
@@ -117,6 +118,60 @@ class UPOHOME{
             if (index > -1) {
                 this.arrayViviendas.splice(index, 1);
                 sMensaje = "Vivienda eliminada correctamente.";
+            }
+        }
+        
+        return sMensaje;
+    }
+    //--//
+    altaEmpleado(oEmpleado) {
+        let sMensaje = "";
+
+        if (this.arrayEmpleados.filter(empleado => empleado.dni == empleado.dni).length == 0) {
+            this.arrayEmpleados.push(oEmpleado);
+            sMensaje = "Alta Empleado OK";
+        } else {
+            sMensaje = "Ese ID Empleado ya estaba dado de alta";
+        }
+
+        return sMensaje;
+    }
+    buscarEmpleado(sDNI){
+        let resultado = null;
+
+        this.arrayEmpleados.forEach(empleado => {
+            if (empleado.dni == sDNI) {
+                resultado = empleado;
+            }
+        });
+
+        return resultado;
+    }
+    modificarEmpleado(sNombre, sApellidos, sDNI, iTelf, fSueldo, sDomicilio){
+        let sMensaje = "No se ha podido modificar el empleado.";
+
+        this.arrayEmpleados.forEach(empleado => {
+            if (empleado.dni == sDNI) {
+                empleado.nombre = sNombre;
+                empleado.apellidos = sApellidos;
+                empleado.telefono = iTelf;
+                empleado.salario = fSueldo;
+                empleado.domicilio = sDomicilio;
+
+                sMensaje = "Empleado modificado correctamente.";
+            }    
+        });
+
+        return sMensaje;
+    }
+    borrarEmpleado(sDni){
+        let sMensaje = "No se ha podido borrar el empleado.";
+        let oEmpleado = oUPOHOME.buscarEmpleado(sDni);
+        if(oEmpleado != null) {
+            let index = this.arrayEmpleados.indexOf(oEmpleado);
+            if (index > -1) {
+                this.arrayEmpleados.splice(index, 1);
+                sMensaje = "Empleado eliminado correctamente.";
             }
         }
         
