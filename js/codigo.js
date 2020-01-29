@@ -179,8 +179,9 @@ function modificarVivienda() {
     }
 }
 function borrarVivienda() {
-    let idVivienda = parseInt(frmEliminarAlquiler.txtID.value.trim());
-
+    let idVivienda = parseInt(frmEliminarVivienda.txtID.value);
+    console.log(idVivienda);
+    
     if(idVivienda == ""){
         alert("Debes rellenar todos los datos y debe estar correctamente");
     }else{

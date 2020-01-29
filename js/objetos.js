@@ -78,8 +78,10 @@ class UPOHOME{
     }
     buscarVivienda(idVivienda) {
         let resultado = null;
-
+        
         this.arrayViviendas.forEach(vivienda => {
+            console.log(vivienda.idVivienda+" == "+idVivienda);
+            
             if (vivienda.idVivienda == idVivienda) {
                 resultado = vivienda;
             }
@@ -107,7 +109,9 @@ class UPOHOME{
     }
     borrarVivivenda(idVivienda){
         let sMensaje = "No se ha podido borrar la vivienda.";
-        let oVivienda = oUPOHOME.buscarCliente(idVivienda);
+        
+        let oVivienda = oUPOHOME.buscarVivienda(idVivienda);
+        
         if(oVivienda != null) {
             let index = this.arrayViviendas.indexOf(oVivienda);
             if (index > -1) {
