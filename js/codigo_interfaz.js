@@ -111,14 +111,6 @@ document.getElementById("btnMenuEliminarLimpieza").addEventListener("click", fun
 
 
 //BOTONES MODIFICAR
-//CITAS
-
-frmCargarCita.btnCargarCita.addEventListener("click", function() {
-    let idCita = frmCargarCita.txtID.value.trim();
-    document.querySelector("#modificarCita").style.display = "block";
-    frmModificarCita.txtId.value = idCita;
-}, false);
-
 
 //LIMPIEZA
 

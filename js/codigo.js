@@ -14,7 +14,10 @@ frmCargarVivienda.btnCargarVivienda.addEventListener("click", cargarVivienda, fa
 frmModificarVivienda.btnModificarVivienda.addEventListener("click", modificarVivienda, false);
 frmEliminarVivienda.btnEliminarVivienda.addEventListener("click", borrarVivienda, false);
 //Citas
-
+frmAsignarCita.btnAceptarCita.addEventListener("click", altaCita, false);
+frmCargarCita.btnCargarCita.addEventListener("click", cargarCita, false);
+frmModificarCita.btnModificarCita.addEventListener("click", modificarCita, false);
+frmEliminarCita.btnEliminarCita.addEventListener("click", borrarCita, false);
 //Empleados
 frmcontratarEmpleado.btnAceptarContratarEmpleado.addEventListener("click", contratarEmpleado, false);
 frmCargarEmpleado.btnCargarEmpleado.addEventListener("click", cargarEmpleado, false);
@@ -28,6 +31,8 @@ frmDespedirEmpleado.btnAceptarBajaEmpleado.addEventListener("click", borrarEmple
     oUPOHOME.altaCliente(new Cliente("Juan", "Pérez Varela", "3", "111222333", "Arenal 14", false));
 
     oUPOHOME.agregarVivienda(new Vivienda("1", "Larra", "25000", true, "", "4", "aaa bbb ccc", "Roble", false, []));
+    
+    oUPOHOME.altaEmpleado(new Empleado("Jose", "Fernandez", "25", "111", "950","Abeto 45"));
 //-----------------------------------------------------------------------------------------------//
 //CLIENTE
 function altaCliente(){
@@ -211,7 +216,108 @@ function borrarVivienda() {
 }
 //-----------------------------------------------------------------------------------------------//
 //CITAS
+function altaCita() {
+    let iId = parseInt(frmAsignarCita.txtId.value);
+    let sFecha = frmAsignarCita.fecha.value.trim();
+    let sHora = frmAsignarCita.txtHora.value.trim();
+    let sDniCliente  = frmAsignarCita.txtDNICliente.value.trim();
+    let sDniEmpleado = frmAsignarCita.txtDNI.value.trim();
+    let sDescripcion = frmAsignarCita.txtDescripcion.value.trim();
 
+    if(isNaN(iId) || sFecha == "" || sHora == "" || sDniCliente == "" || sDniEmpleado == "" || sDescripcion == ""){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+        
+    }else{
+        let oCliente = oUPOHOME.buscarCliente(sDniCliente);
+        let oEmpleado = oUPOHOME.buscarEmpleado(sDniEmpleado);
+        if(oCliente != null){
+            if(oEmpleado != null){
+                let oCita = new Cita(iId, sDniCliente, sDniEmpleado, sFecha, sHora, sDescripcion);
+                let sMensaje = oUPOHOME.altaCita(oCita);
+
+                alert(sMensaje);
+                document.querySelector("form[name='frmAsignarCita']").reset();
+
+                ocultarFormularios();   
+            }else{
+                alert("No existe el empleado.");
+            }
+        }else{
+            alert("No existe el cliente");
+        }
+        
+    }
+} 
+function cargarCita() {
+    //Comprobamos si existe
+    let sId = frmCargarCita.txtID.value.trim();
+    let oCita = oUPOHOME.buscarCita(sId);
+    if(oCita == null){
+        alert("No existe cita con ese ID.");
+    }else{
+        document.querySelector("#modificarCita").style.display = "block";
+        frmModificarCita.txtId.value = sId;
+        frmModificarCita.fecha.value = oCita.fecha;
+        frmModificarCita.txtHora.value = oCita.hora;
+        frmModificarCita.txtDNICliente.value = oCita.dniCliente;
+        frmModificarCita.txtDNI.value = oCita.dniEmpleado;
+        frmModificarCita.txtDescripcion.value = oCita.descripcion;
+    }
+
+} 
+function modificarCita() {
+    let iId = parseInt(frmModificarCita.txtId.value);
+    let sFecha = frmModificarCita.fecha.value.trim();
+    let sHora = frmModificarCita.txtHora.value.trim();
+    let sDniCliente  = frmModificarCita.txtDNICliente.value.trim();
+    let sDniEmpleado = frmModificarCita.txtDNI.value.trim();
+    let sDescripcion = frmModificarCita.txtDescripcion.value.trim();
+
+    if(isNaN(iId) || sFecha == "" || sHora == "" || sDniCliente == "" || sDniEmpleado == "" || sDescripcion == ""){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        
+            let oCliente = oUPOHOME.buscarCliente(sDniCliente);
+            let oEmpleado = oUPOHOME.buscarEmpleado(sDniEmpleado);
+            if(oCliente != null){
+                if(oEmpleado != null){
+                    let sMensaje = oUPOHOME.modificarCita(iId, sDniCliente, sDniEmpleado, sFecha, sHora, sDescripcion);
+
+                    alert(sMensaje);
+                    if(sMensaje == "Cita modificada correctamente."){
+                        document.querySelector("form[name='frmCargarCita']").reset();
+                        document.querySelector("form[name='frmModificarCita']").reset();
+                        ocultarFormularios();
+                    }
+                    
+                }else{
+                    alert("No existe el empleado.");
+                }
+            }else{
+                alert("No existe el cliente");
+            }
+            
+        
+        
+    }
+} 
+function borrarCita() {
+    let sId = frmEliminarCita.txtID.value.trim();
+
+    if(sId == ""){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        
+        let sMensaje = oUPOHOME.borrarCita(sId);
+
+        alert(sMensaje);
+        if(sMensaje == "Cita eliminada correctamente."){
+            document.querySelector("form[name='frmEliminarCita']").reset();
+            ocultarFormularios();   
+        }
+        
+    }
+}
 //-----------------------------------------------------------------------------------------------//
 //EMPLEADO
 function contratarEmpleado(){

@@ -124,10 +124,65 @@ class UPOHOME{
         return sMensaje;
     }
     //--//
+    altaCita(oCita){
+        let sMensaje = "";
+
+        if (this.arrayCitas.filter(cita => cita.idCita == oCita.idCita).length == 0) {
+            this.arrayCitas.push(oCita);
+            sMensaje = "Alta Cita OK";
+        } else {
+            sMensaje = "Ese ID Cita ya estaba dado de alta";
+        }
+
+        return sMensaje;
+    }
+    buscarCita(sId) {
+        let resultado = null;
+
+        this.arrayCitas.forEach(cita => {
+            console.log(cita.idCita+" == "+sId);
+            if (cita.idCita == sId) {
+                resultado = cita;
+            }
+        });
+
+        return resultado;
+    }
+    modificarCita(iId, sDniCliente, sDniEmpleado, sFecha, sHora, sDescripcion){
+        let sMensaje = "No se ha podido modificar la cita.";
+
+        this.arrayCitas.forEach(cita => {
+            if (cita.idCita == iId) {
+                cita.dniCliente = sDniCliente;
+                cita.dniEmpleado = sDniEmpleado;
+                cita.fecha = sFecha;
+                cita.hora = sHora;
+                cita.descripcion = sDescripcion;
+
+                sMensaje = "Cita modificada correctamente.";
+            }    
+        });
+
+        return sMensaje;
+    }
+    borrarCita(sId){
+        let sMensaje = "No se ha podido borrar la cita.";
+        let oCita = oUPOHOME.buscarCita(sId);
+        if(oCita != null) {
+            let index = this.arrayCitas.indexOf(oCita);
+            if (index > -1) {
+                this.arrayCitas.splice(index, 1);
+                sMensaje = "Cita eliminada correctamente.";
+            }
+        }
+        
+        return sMensaje;
+    }
+    //--//
     altaEmpleado(oEmpleado) {
         let sMensaje = "";
 
-        if (this.arrayEmpleados.filter(empleado => empleado.dni == empleado.dni).length == 0) {
+        if (this.arrayEmpleados.filter(empleado => empleado.dni == oEmpleado.dni).length == 0) {
             this.arrayEmpleados.push(oEmpleado);
             sMensaje = "Alta Empleado OK";
         } else {
@@ -246,8 +301,10 @@ class Vivienda{
 
 class Cita{
 
-    constructor(idCita, fecha, hora, descripcion){
+    constructor(idCita, dniCliente, dniEmpleado, fecha, hora, descripcion){
         this.idCita = idCita;               //int
+        this.dniCliente = dniCliente;       //String
+        this.dniEmpleado = dniEmpleado;     //String
         this.fecha = fecha;                 //date
         this.hora = hora;                   //string
         this.descripcion = descripcion;     //string
