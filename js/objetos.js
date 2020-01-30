@@ -65,6 +65,63 @@ class UPOHOME{
         return sMensaje;
     }
     //--//
+    añadirAlquiler(oAlquiler) {
+        let sMensaje = "";
+
+        if (this.arrayAlquileres.filter(alquiler => alquiler.idAlquiler == oAlquiler.idAlquiler).length == 0) {
+            this.arrayAlquileres.push(oAlquiler);
+            sMensaje = "Alquiler realizado con éxito";
+        } else {
+            sMensaje = "El ID del alquiler esta duplicado";
+        }
+
+        return sMensaje;
+    }
+
+    buscarAlquiler(sIdAlquiler){
+        let resultado = null;
+
+        this.arrayAlquileres.forEach(alquiler => {
+            if (alquiler.idAlquiler == sIdAlquiler) {
+                resultado = alquiler;
+            }
+        });
+
+        return resultado;
+    }
+
+    modificarAlquiler(sIdAlquiler, sDniCliente, sIdVivienda, dFechaInicio, dFechaFin){
+        let sMensaje = "No se ha podido modificar el alquiler.";
+
+        this.arrayAlquileres.forEach(alquiler => {
+            if (alquiler.idAlquiler == sIdAlquiler) {
+                alquiler.dniCliente = sDniCliente;
+                alquiler.idVivienda = sIdVivienda;
+                alquiler.fechaInicio = dFechaInicio;
+                alquiler.fechaFin = dFechaFin;
+
+                sMensaje = "Alquiler modificado correctamente.";
+            }    
+        });
+
+        return sMensaje;
+
+    }
+
+    borrarAlquiler(sIdAlquiler){
+        let sMensaje = "No se ha podido borrar el alquiler.";
+        let oAlquiler = oUPOHOME.buscarAlquiler(sIdAlquiler);
+        if(oAlquiler != null) {
+            let index = this.arrayAlquileres.indexOf(oAlquiler);
+            if (index > -1) {
+                this.arrayAlquileres.splice(index, 1);
+                sMensaje = "Alquiler eliminado correctamente.";
+            }
+        }
+        
+        return sMensaje;
+    }
+    //--//
     agregarVivienda(oVivienda) {
         let sMensaje = "";
 
@@ -81,7 +138,6 @@ class UPOHOME{
         let resultado = null;
         
         this.arrayViviendas.forEach(vivienda => {
-            console.log(vivienda.idVivienda+" == "+idVivienda);
             
             if (vivienda.idVivienda == idVivienda) {
                 resultado = vivienda;
@@ -227,6 +283,60 @@ class UPOHOME{
             if (index > -1) {
                 this.arrayEmpleados.splice(index, 1);
                 sMensaje = "Empleado eliminado correctamente.";
+            }
+        }
+        
+        return sMensaje;
+    }
+    //--//
+    añadirLimpieza(oLimpieza) {
+        let sMensaje = "";
+
+        if (this.arrayLimpiezas.filter(limpieza => limpieza.idLimpieza == oLimpieza.idLimpieza).length == 0) {
+            this.arrayLimpiezas.push(oLimpieza);
+            sMensaje = "Limpieza asignada con exito";
+        } else {
+            sMensaje = "El ID de la limpieza esta duplicado";
+        }
+
+        return sMensaje;
+    }
+    buscarLimpieza(idLimpieza){
+        let resultado = null;
+
+        this.arrayLimpiezas.forEach(limpieza => {
+            if (limpieza.idLimpieza == idLimpieza) {
+                resultado = limpieza;
+            }
+        });
+
+        return resultado;
+    }
+    modificarLimpieza(sIdLimpieza, sIdEmpleado, sIdVivienda, sFecha, sHora, bFinalizado){
+        let sMensaje = "No se ha podido modificar la limpieza.";
+
+        this.arrayLimpiezas.forEach(limpieza => {
+            if (limpieza.idLimpieza == sIdLimpieza) {
+                limpieza.idEmpleado = sIdEmpleado;
+                limpieza.idVivienda = sIdVivienda;
+                limpieza.fecha = sFecha;
+                limpieza.hora = sHora;
+                limpieza.finalizado = bFinalizado;
+
+                sMensaje = "Limpieza modificada correctamente.";
+            }    
+        });
+
+        return sMensaje;
+    }
+    borrarLimpieza(sIdLimpieza){
+        let sMensaje = "No se ha podido borrar la limpieza.";
+        let oLimpieza = oUPOHOME.buscarLimpieza(sIdLimpieza);
+        if(oLimpieza != null) {
+            let index = this.arrayLimpiezas.indexOf(oLimpieza);
+            if (index > -1) {
+                this.arrayLimpiezas.splice(index, 1);
+                sMensaje = "Limpieza eliminada correctamente.";
             }
         }
         

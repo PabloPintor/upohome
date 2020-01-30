@@ -110,18 +110,6 @@ document.getElementById("btnMenuEliminarLimpieza").addEventListener("click", fun
 }, false);
 
 
-//BOTONES MODIFICAR
-
-//LIMPIEZA
-
-frmCargarLimpieza.btnCargarLimpieza.addEventListener("click", function() {
-    let idLimpieza = frmCargarLimpieza.txtID.value.trim();
-    document.querySelector("#modificarLimpieza").style.display = "block";
-    frmModificarLimpieza.txtId.value = idLimpieza;
-}, false);
-
-
-
 //funcion que oculta todos los formularios
 function ocultarFormularios() {
     let arrayDivsFormularios = document.querySelectorAll(".divFormulario");

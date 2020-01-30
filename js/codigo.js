@@ -24,6 +24,10 @@ frmCargarEmpleado.btnCargarEmpleado.addEventListener("click", cargarEmpleado, fa
 frmModificarEmpleado.btnAceptarModificarEmpleado.addEventListener("click", modificarEmpleado, false);
 frmDespedirEmpleado.btnAceptarBajaEmpleado.addEventListener("click", borrarEmpleado, false);
 //Limpieza
+frmAsignarLimpieza.btnAceptarLimpieza.addEventListener("click", asignarLimpieza, false);
+frmCargarLimpieza.btnCargarLimpieza.addEventListener("click", cargarLimpieza, false);
+frmModificarLimpieza.btnAceptarLimpieza.addEventListener("click", modificarLimpieza, false);
+frmEliminarLimpieza.btnAceptarEliminarLimpieza.addEventListener("click", borrarLimpieza, false);
 //-----------------------------------------------------------------------------------------------//
 //Datos de prueba
     oUPOHOME.altaCliente(new Cliente("Manuel Esteban", "Rodríguez Gómez", "1", "608995074", "Larra 29", false));
@@ -406,4 +410,110 @@ function borrarEmpleado () {
 }
 //-----------------------------------------------------------------------------------------------//
 //LIMPIEZA
+function asignarLimpieza() {
+    let iId = parseInt(frmAsignarLimpieza.txtId.value);
+    let sFecha = frmAsignarLimpieza.fecha.value.trim();
+    let sHora = frmAsignarLimpieza.txtHora.value.trim();
+    let sDniEmpleado = frmAsignarLimpieza.txtDNI.value.trim();
+    let idVivienda = frmAsignarLimpieza.txtIDVivienda.value.trim();
+    let bFinalizado = frmAsignarLimpieza.chkFinalizado.checked;
+    
+    if(isNaN(iId) || sFecha == "" || sHora == "" || sDniEmpleado == "" || idVivienda == "" ){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+            let oVivienda = oUPOHOME.buscarVivienda(idVivienda);
+            let oEmpleado = oUPOHOME.buscarEmpleado(sDniEmpleado);
+            if(oVivienda != null){
+                if(oEmpleado != null){
+                    let oLimpieza = new Limpieza(iId, sDniEmpleado, idVivienda, sFecha, sHora, bFinalizado);
+                    let sMensaje = oUPOHOME.añadirLimpieza(oLimpieza);
+    
+                    alert(sMensaje);
+                    if(sMensaje == "Limpieza asignada con exito"){
+                        document.querySelector("form[name='frmAsignarLimpieza']").reset();
+    
+                        ocultarFormularios();   
+                    }    
+                   
+                }else{
+                    alert("No existe el empleado.");
+                }
+            }else{
+                alert("No existe la vivienda");
+            }
+            
+        
+        
+    }
+}
+function cargarLimpieza() {
+    let iIdLimpieza = parseInt(frmCargarLimpieza.txtID.value.trim());
 
+    let oLimpieza = oUPOHOME.buscarLimpieza(iIdLimpieza);
+    if(oLimpieza == null){
+        alert("No se encuentran datos de la limpieza.");
+    }else{
+        document.querySelector("#modificarLimpieza").style.display = "block";
+        frmModificarLimpieza.txtId.value = iIdLimpieza;
+        frmModificarLimpieza.fecha.value = oLimpieza.fecha;
+        frmModificarLimpieza.txtHora.value = oLimpieza.hora;
+        frmModificarLimpieza.txtDNI.value = oLimpieza.idEmpleado;
+        frmModificarLimpieza.txtIDVivienda.value = oLimpieza.idVivienda
+        frmModificarLimpieza.chkFinalizado.checked = oLimpieza.finalizado;
+    }   
+
+
+}
+function modificarLimpieza() {
+    let iId = parseInt(frmModificarLimpieza.txtId.value);
+    let sFecha = frmModificarLimpieza.fecha.value.trim();
+    let sHora = frmModificarLimpieza.txtHora.value.trim();
+    let sDniEmpleado = frmModificarLimpieza.txtDNI.value.trim();
+    let idVivienda = frmModificarLimpieza.txtIDVivienda.value.trim();
+    let bFinalizado = frmModificarLimpieza.chkFinalizado.checked;
+
+    if(isNaN(iId) || sFecha == "" || sHora == "" || sDniEmpleado == "" || idVivienda == "" ){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        
+            let oVivienda = oUPOHOME.buscarVivienda(idVivienda);
+            let oEmpleado = oUPOHOME.buscarEmpleado(sDniEmpleado);
+            if(oVivienda != null){
+                if(oEmpleado != null){
+                    let sMensaje = oUPOHOME.modificarLimpieza(iId, sDniEmpleado, idVivienda, sFecha, sHora, bFinalizado);
+
+                    alert(sMensaje);
+                    if(sMensaje == "Limpieza modificada correctamente."){
+                        document.querySelector("form[name='frmCargarLimpieza']").reset();
+                        document.querySelector("form[name='frmModificarLimpieza']").reset();
+                        ocultarFormularios();
+                    }
+                    
+                }else{
+                    alert("No existe el empleado.");
+                }
+            }else{
+                alert("No existe la vivienda");
+            }
+            
+        
+        
+    }
+}
+function borrarLimpieza() {
+    let sId = frmEliminarLimpieza.txtID.value.trim();
+
+    if(sId == ""){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        
+        let sMensaje = oUPOHOME.borrarLimpieza(sId);
+
+        alert(sMensaje);
+        if(sMensaje == "Limpieza eliminada correctamente."){
+            document.querySelector("form[name='frmEliminarLimpieza']").reset();
+            ocultarFormularios();   
+        }
+        
+    }
+}
