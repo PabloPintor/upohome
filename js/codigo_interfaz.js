@@ -109,6 +109,13 @@ document.getElementById("btnMenuEliminarLimpieza").addEventListener("click", fun
     document.querySelector("#eliminarLimpieza").style.display = "block";
 }, false);
 
+//LISTAR
+
+document.getElementById("btnListarViviendas").addEventListener("click", function() {
+    ocultarFormularios();
+    document.querySelector("#listados").style.display = "block";
+}, false);
+
 
 //funcion que oculta todos los formularios
 function ocultarFormularios() {

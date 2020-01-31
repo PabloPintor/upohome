@@ -45,6 +45,9 @@ oUPOHOME.rellenarArrays();
     */
 //-----------------------------------------------------------------------------------------------//
 //CLIENTE
+
+oUPOHOME.crearTabla();
+
 function altaCliente(){
     let bValido = true;
     let msgError = "";
@@ -936,4 +939,45 @@ function borrarLimpieza() {
     }else{
         alert(msgError);
     }
+}
+
+function crearTabla() {
+
+    //crear tabla dom
+    let oTabla = document.createElement("TABLE");
+    oTabla.classList.add("table");
+    oTabla.classList.add("table-striped");
+    oTabla.setAttribute("border","1");
+    oTabla.setAttribute("id","tablaListados");
+
+    //encabezado
+    let oTHead = oTabla.createTHead();
+    let oFila = oTHead.insertRow(-1);
+
+    //insertar filas thead, una detras de otra
+    let oTH = oFila.insertCell(-1);
+    oTH.textContent = "ID";
+    oTH = oFila.insertCell(-1);
+    oTH.textContent = "DIRECCION";
+    oTH = oFila.insertCell(-1);
+    oTH.textContent = "PRECIO";
+    oTH = oFila.insertCell(-1);
+    oTH.textContent = "DISPONIBILIDAD";
+    oTH = oFila.insertCell(-1);
+    oTH.textContent = "Nº HABITACIONES";
+
+    //insertar filas tbody
+    let oTBody = document.createElement("TBODY");
+    oTabla.appendChild(oTBody);
+
+    //insertar una fila
+    oUPOHOME.arrayVivienas.forEach(vivienda => {
+        let oCelda = oFila.insertCell(-1);
+        oCelda.textContent = vivienda.idVivienda;
+
+        oCelda = oFila.insertCell(-1);
+        oCelda.textContent = vivienda.direccion;
+    });
+
+    document.querySelector("#listados").appendChild(oTabla);
 }
