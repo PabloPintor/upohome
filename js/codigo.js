@@ -33,6 +33,7 @@ frmModificarLimpieza.btnAceptarLimpieza.addEventListener("click", modificarLimpi
 frmEliminarLimpieza.btnAceptarEliminarLimpieza.addEventListener("click", borrarLimpieza, false);
 //-----------------------------------------------------------------------------------------------//
 //Datos de prueba
+oUPOHOME.rellenarArrays();
 /*
     oUPOHOME.altaCliente(new Cliente("Manuel Esteban", "Rodríguez Gómez", "1", "608995074", "Larra 29", false));
     oUPOHOME.altaCliente(new Cliente("Pablo", "Pintor Álvarez", "2", "666888111", "Roble 32", false));
@@ -54,7 +55,7 @@ function altaCliente(){
     let iTelf = parseInt(frmAltaCliente.txtTelefono.value);
     let sDomicilio = frmAltaCliente.txtDomicilio.value.trim();
 
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     let oExpRegTelf = /^[0-9]{9}$/;
     if (!oExpRegDNI.test(sDNI)) {
         msgError += "\nEl DNI debe ser valido.";
@@ -90,7 +91,7 @@ function cargarCliente(){
 
     let sDni = frmCargarCliente.txtDNI.value.trim();
 
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegDNI.test(sDni)) {
         msgError += "\nEl DNI debe ser valido.";
         bValido = false;
@@ -122,7 +123,7 @@ function modificarCliente(){
     let iTelf = parseInt(frmModificarCliente.txtTelefono.value);
     let sDomicilio = frmModificarCliente.txtDomicilio.value.trim();
 
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     let oExpRegTelf = /^[0-9]{9}$/;
     if (!oExpRegDNI.test(sDNI)) {
         msgError += "\nEl DNI debe ser valido.";
@@ -155,7 +156,7 @@ function borrarCliente(){
 
     let sDni = frmBajaCliente.txtDNI.value.trim();
 
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegDNI.test(sDni)) {
         msgError += "\nEl DNI debe ser valido.";
         bValido = false;
@@ -185,7 +186,7 @@ function altaAlquiler(){
     let sFechaFin = frmAlquilar.fechaFin.value.trim();
 
     let oExpRegID = /^[0-9]*$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegID.test(sId)) {
         msgError += "\nID alquiler debe ser un numero.";
         bValido = false;
@@ -265,7 +266,7 @@ function modificarAlquiler(){
     let sFechaFin = frmModificarAlquiler.fechaFin.value.trim();
 
     let oExpRegID = /^[0-9]*$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegID.test(sId)) {
         msgError += "\nID alquiler debe ser un numero.";
         bValido = false;
@@ -487,7 +488,7 @@ function altaCita() {
     let sDescripcion = frmAsignarCita.txtDescripcion.value.trim();
 
     let oExpRegID = /^[0-9]*$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegID.test(iId)) {
         msgError += "\nID cita debe ser un numero.";
         bValido = false;
@@ -568,7 +569,7 @@ function modificarCita() {
     let sDescripcion = frmModificarCita.txtDescripcion.value.trim();
 
     let oExpRegID = /^[0-9]*$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegID.test(iId)) {
         msgError += "\nID cita debe ser un numero.";
         bValido = false;
@@ -647,7 +648,7 @@ function contratarEmpleado(){
     let fSueldo = parseFloat(frmcontratarEmpleado.txtSueldo.value);
 
     let oExpRegTelf = /^[0-9]{9}$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     let oExpRegFloat = /^([0-9]*[.])?[0-9]*$/;
     if (!oExpRegTelf.test(iTelf)) {
         msgError += "\nTelefono tiene una longitud de 9 numeros.";
@@ -685,7 +686,7 @@ function cargarEmpleado() {
     let msgError = "";
 
     let sDni = frmCargarEmpleado.txtDNI.value.trim();
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegDNI.test(sDni)) {
         msgError += "\nDNI debe ser valido";
         bValido = false;
@@ -720,7 +721,7 @@ function modificarEmpleado() {
     let fSueldo = parseFloat(frmModificarEmpleado.txtSueldo.value);
 
     let oExpRegTelf = /^[0-9]{9}$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     let oExpRegFloat = /^([0-9]*[.])?[0-9]*$/;
     if (!oExpRegTelf.test(iTelf)) {
         msgError += "\nTelefono tiene una longitud de 9 numeros.";
@@ -756,7 +757,7 @@ function borrarEmpleado () {
     let msgError = "";
 
     let sDni = frmDespedirEmpleado.txtDNI.value.trim();
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegDNI.test(sDni)) {
         msgError += "\nDNI debe ser valido";
         bValido = false;
@@ -787,7 +788,7 @@ function asignarLimpieza() {
     let bFinalizado = frmAsignarLimpieza.chkFinalizado.checked;
     
     let oExpRegID = /^[0-9]*$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegID.test(iId)) {
         msgError += "\nID limpieza debe ser un numero.";
         bValido = false;
@@ -870,7 +871,7 @@ function modificarLimpieza() {
     let bFinalizado = frmModificarLimpieza.chkFinalizado.checked;
 
     let oExpRegID = /^[0-9]*$/;
-    let oExpRegDNI = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/;
+    let oExpRegDNI = /^[0-9]{8}[a-zA-Z]$/;
     if (!oExpRegID.test(iId)) {
         msgError += "\nID limpieza debe ser un numero.";
         bValido = false;

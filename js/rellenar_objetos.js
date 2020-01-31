@@ -1,4 +1,4 @@
-let oXML = loadXMLDoc("pisos.xml");
+let oXML = loadXMLDoc("../pisos.xml");
 let arrayViviendasTemp = oXML.querySelectorAll("vivienda");
 let arrayViviendas = Array();
 arrayViviendasTemp.forEach(vivienda => {
@@ -67,3 +67,16 @@ arrayLimpiezasTemp.forEach(limpieza => {
                                     limpieza.querySelector("domicilio").textContent));
 });
 
+function loadXMLDoc(filename) {
+    let xhttp = null;
+
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else { // code for IE5 and IE6
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.open("GET", filename, false);
+    xhttp.send();
+
+    return xhttp.responseXML;
+}

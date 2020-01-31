@@ -2,12 +2,12 @@ let oXML = loadXMLDoc("pisos.xml");
 let arrayViviendasTemp = oXML.querySelectorAll("vivienda");
 let arrayViviendas = Array();
 arrayViviendasTemp.forEach(vivienda => {
-    arrayViviendas.push(new Vivienda(vivienda.querySelector("idVivienda").textContent,
+    arrayViviendas.push(new Vivienda(vivienda.querySelector("idvivienda").textContent,
                                     vivienda.querySelector("direccion").textContent,
-                                    vivienda.querySelector("precioAlquiler").textContent,
-                                    vivienda.querySelector("estadoDisponibilidad").textContent,
-                                    vivienda.querySelector("imgPrincipal").textContent,
-                                    vivienda.querySelector("numHabitaciones").textContent,
+                                    vivienda.querySelector("precioalquiler").textContent,
+                                    vivienda.querySelector("estadodisponibilidad").textContent,
+                                    vivienda.querySelector("imgprincipal").textContent,
+                                    vivienda.querySelector("numhabitaciones").textContent,
                                     vivienda.querySelector("descripcion").textContent,
                                     vivienda.querySelector("exterior").textContent,
                                     vivienda.querySelector("climatizacion").textContent, null));

@@ -10,8 +10,73 @@ class UPOHOME{
         this.arrayLimpiezas = [];
         this.arrayViviendas = [];
     }
-
     //metodos
+	rellenarArrays(){
+		let oXML = loadXMLDoc("../pisos.xml");
+		let arrayViviendasTemp = oXML.querySelectorAll("vivienda");
+		arrayViviendasTemp.forEach(vivienda => {
+			this.arrayViviendas.push(new Vivienda(vivienda.querySelector("idvivienda").textContent,
+											vivienda.querySelector("direccion").textContent,
+											vivienda.querySelector("precioalquiler").textContent,
+											vivienda.querySelector("estadodisponibilidad").textContent,
+											vivienda.querySelector("imgprincipal").textContent,
+											vivienda.querySelector("numhabitaciones").textContent,
+											vivienda.querySelector("descripcion").textContent,
+											vivienda.querySelector("exterior").textContent,
+											vivienda.querySelector("climatizacion").textContent, null));
+		});
+		let arrayClientesTemp = oXML.querySelectorAll("cliente");
+		let arrayClientes = Array();
+		arrayClientesTemp.forEach(cliente => {
+			this.arrayClientes.push(new Cliente(cliente.querySelector("nombre").textContent,
+											cliente.querySelector("apellidos").textContent,
+											cliente.querySelector("dni").textContent,
+											cliente.querySelector("telefono").textContent,
+											cliente.querySelector("domicilio").textContent,
+											cliente.querySelector("espropietario").textContent));
+		});
+		let arrayAlquileresTemp = oXML.querySelectorAll("alquiler");
+		let arrayAlquileres = Array();
+		arrayAlquileresTemp.forEach(alquiler => {
+			this.arrayAlquileres.push(new Alquiler(alquiler.querySelector("idalquiler").textContent,
+											alquiler.querySelector("idvivienda").textContent,
+											alquiler.querySelector("dnicliente").textContent,
+											alquiler.querySelector("fechainicio").textContent,
+											alquiler.querySelector("fechafin").textContent));
+		});
+		let arrayCitasTemp = oXML.querySelectorAll("cita");
+		let arrayCitas = Array();
+		arrayCitasTemp.forEach(cita => {
+			this.arrayCitas.push(new Cita(cita.querySelector("idcita").textContent,
+											cita.querySelector("dnicliente").textContent,
+											cita.querySelector("dniempleado").textContent,
+											cita.querySelector("fecha").textContent,
+											cita.querySelector("hora").textContent,
+											cita.querySelector("descripcion").textContent));
+		});
+		let arrayEmpleadosTemp = oXML.querySelectorAll("empleado");
+		let arrayEmpleados = Array();
+		arrayEmpleadosTemp.forEach(emplado => {
+			this.arrayEmpleados.push(new Empleado(emplado.querySelector("nombre").textContent,
+											emplado.querySelector("apellidos").textContent,
+											emplado.querySelector("dni").textContent,
+											emplado.querySelector("telefono").textContent,
+											emplado.querySelector("salario").textContent,
+											emplado.querySelector("domicilio").textContent));
+		});
+		let arrayLimpiezasTemp = oXML.querySelectorAll("limpieza");
+		let arrayLimpiezas = Array();
+
+		arrayLimpiezasTemp.forEach(limpieza => {
+			console.log(limpieza);
+			this.arrayLimpiezas.push(new Limpieza(limpieza.querySelector("idlimpieza").textContent,
+											limpieza.querySelector("idempleado").textContent,
+											limpieza.querySelector("idvivienda").textContent,
+											limpieza.querySelector("fecha").textContent,
+											limpieza.querySelector("hora").textContent,
+											limpieza.querySelector("finalizado").textContent));
+		});
+	}	
     altaCliente(oCliente) {
         let sMensaje = "";
 
@@ -82,7 +147,6 @@ class UPOHOME{
         let resultado = null;
 
         this.arrayAlquileres.forEach(alquiler => {
-            console.log(alquiler.idAlquiler+" == "+sIdAlquiler);
             
             if (alquiler.idAlquiler == sIdAlquiler) {
                 resultado = alquiler;
@@ -199,7 +263,6 @@ class UPOHOME{
         let resultado = null;
 
         this.arrayCitas.forEach(cita => {
-            console.log(cita.idCita+" == "+sId);
             if (cita.idCita == sId) {
                 resultado = cita;
             }
@@ -461,4 +524,17 @@ class Limpieza{
 
 
 
+}
+function loadXMLDoc(filename) {
+    let xhttp = null;
+
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else { // code for IE5 and IE6
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.open("GET", filename, false);
+    xhttp.send();
+
+    return xhttp.responseXML;
 }
