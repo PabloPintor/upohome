@@ -63,64 +63,14 @@
         </a>
     </div>
 
-    <!--Codigo js, clases-->
-    <script src="js/objetos.js"></script>
-
-    <!--Objetos prueba-->
-    <script>
-
-
-    </script>
-
-    <!--PISOS-->
-    <h2 class="ml-4 mt-4 mb-4">Ultimas novedades de pisos!</h2>
-    <div class="container" id="divPisos">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a class="btn btn-primary">Ver detalles</a>
-            </div>
-        </div>
+    <div class="container">
+        <div class="row" id="divViviendas"></div>
     </div>
 
-    <script>
+    <!--Codigo js, clases-->
+    <script src="js/objetos.js"></script>
+    <script src="js/codigo_indice.js"></script>
 
-        añadirPiso("Falle fake 123", "ninguna", "Mejor casa del mundo loco");
-
-        function añadirPiso(direccion, imagen, descripcion) {
-            let divPisos = document.querySelector("#divPisos");
-            let divCard = document.createElement("DIV");
-            divCard.classList.add("card");
-            divCard.style.width = "18rem";
-            divPisos.appendChild(divCard);
-            let oImagen = document.createElement("IMG");
-            oImagen.setAttribute("src", imagen);
-            oImagen.classList.add("card-img-top");
-            divCard.appendChild(oImagen);
-            let divCardBody = document.createElement("DIV");
-            divCardBody.classList.add("card-body");
-            divCard.appendChild(divCardBody);
-            let h5 = document.createElement("H5");
-            h5.classList.add("card-title");
-            h5.textContent = direccion;
-            divCardBody.appendChild(h5);
-            let parrafo = document.createElement("P");
-            parrafo.classList.add("card-text");
-            parrafo.textContent = descripcion;
-            divCardBody.appendChild(parrafo);
-            let boton = document.createElement("A");
-            boton.classList.add("btn");
-            boton.classList.add("btn-primary");
-            boton.textContent = "Ver detalles";
-            divCardBody.appendChild(boton);
-        }
- 
-    </script>
-
-    
     <!--Bootstrap, jquery-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
