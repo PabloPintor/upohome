@@ -450,7 +450,7 @@ class Limpieza{
 
     constructor(idLimpieza, idEmpleado, idVivienda, fecha, hora, finalizado){
         this.idLimpieza = idLimpieza    //int
-        this.idEmpleado = idEmpleado;   //int (Añadido)
+        this.idEmpleado = idEmpleado;   //string (Añadido)
         this.idVivienda = idVivienda;   //int (Añadido)
         this.fecha = fecha;             //Date
         this.hora = hora;               //string
