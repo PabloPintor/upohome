@@ -116,4 +116,9 @@ function ocultarFormularios() {
     arrayDivsFormularios.forEach(div => {
         div.style.display = "none";
     });
+    //Reseteamos todos los formularios
+    let arrayFormularios = document.querySelectorAll(".divFormulario form");
+    arrayFormularios.forEach(div => {
+        div.reset();
+    });
 }

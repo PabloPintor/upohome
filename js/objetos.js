@@ -82,6 +82,8 @@ class UPOHOME{
         let resultado = null;
 
         this.arrayAlquileres.forEach(alquiler => {
+            console.log(alquiler.idAlquiler+" == "+sIdAlquiler);
+            
             if (alquiler.idAlquiler == sIdAlquiler) {
                 resultado = alquiler;
             }
@@ -90,7 +92,7 @@ class UPOHOME{
         return resultado;
     }
 
-    modificarAlquiler(sIdAlquiler, sDniCliente, sIdVivienda, dFechaInicio, dFechaFin){
+    modificarAlquiler(sIdAlquiler, sIdVivienda, sDniCliente, dFechaInicio, dFechaFin){
         let sMensaje = "No se ha podido modificar el alquiler.";
 
         this.arrayAlquileres.forEach(alquiler => {
@@ -111,6 +113,7 @@ class UPOHOME{
     borrarAlquiler(sIdAlquiler){
         let sMensaje = "No se ha podido borrar el alquiler.";
         let oAlquiler = oUPOHOME.buscarAlquiler(sIdAlquiler);
+        
         if(oAlquiler != null) {
             let index = this.arrayAlquileres.indexOf(oAlquiler);
             if (index > -1) {
@@ -363,10 +366,10 @@ class Cliente{
 
 class Alquiler{
 
-    constructor(idAlquiler, fechaInicio, fechaFin){
+    constructor(idAlquiler, idVivienda, dniCliente, fechaInicio, fechaFin){
         this.idAlquiler = idAlquiler;       //int
+        this.idVivienda = idVivienda;       //int (Añadido)
         this.dniCliente = dniCliente;       //string (Añadido)
-        this.idVivienda = idVivienda;       //string (Añadido)
         this.fechaInicio = fechaInicio;     //Date
         this.fechaFin = fechaFin;           //Date
     }

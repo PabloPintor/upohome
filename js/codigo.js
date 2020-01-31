@@ -7,7 +7,10 @@ frmCargarCliente.btnCargarCliente.addEventListener("click", cargarCliente, false
 frmModificarCliente.btnAceptarModificarCliente.addEventListener("click", modificarCliente, false);
 frmBajaCliente.btnAceptarBajaCliente.addEventListener("click", borrarCliente, false);
 //Alquiler
-
+frmAlquilar.btnAceptarAlquiler.addEventListener("click", altaAlquiler,false);
+frmCargarAlquiler.btnCargarAlquiler.addEventListener("click", cargarAlquiler,false);
+frmModificarAlquiler.btnAceptarModificarAlquiler.addEventListener("click", modificarAlquiler,false);
+frmEliminarAlquiler.btnEliminarAlquiler.addEventListener("click", borrarAlquiler,false);
 //Vivienda
 frmAgregarVivienda.btnAceptarVivienda.addEventListener("click", agregarVivienda, false);
 frmCargarVivienda.btnCargarVivienda.addEventListener("click", cargarVivienda, false);
@@ -58,8 +61,6 @@ function altaCliente(){
         let sMensaje = oUPOHOME.altaCliente(oCliente);
 
         alert(sMensaje);
-        document.querySelector("form[name='frmAltaCliente']").reset();
-
         ocultarFormularios();   
     }
 }
@@ -95,9 +96,6 @@ function modificarCliente(){
 
         alert(sMensaje);
         if(sMensaje == "Cliente modificado correctamente."){ 
-            document.querySelector("form[name='frmCargarCliente']").reset();
-            document.querySelector("form[name='frmModificarCliente']").reset();
-
             ocultarFormularios();
         }
         
@@ -114,15 +112,101 @@ function borrarCliente(){
 
         alert(sMensaje);
         if(sMensaje == "Cliente modificado correctamente."){
-            document.querySelector("form[name='frmBajaCliente']").reset();
             ocultarFormularios();   
         }
         
     }
 }
 //-----------------------------------------------------------------------------------------------//
-//ALQUIERA
+//ALQUILER
+function altaAlquiler(){
+    let sId = parseInt(frmAlquilar.txtId.value);
+    let sIdVivienda = parseInt(frmAlquilar.txtIdVivienda.value);
+    let sDNI = frmAlquilar.txtDNI.value.trim();
+    let sFechaInicio = frmAlquilar.fechaInicio.value.trim();
+    let sFechaFin = frmAlquilar.fechaFin.value.trim();
 
+    if( isNaN(sId) || sIdVivienda == "" ||sDNI == "" || sFechaInicio == "" || sFechaFin == "" ){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+        
+    }else{
+        let oCliente = oUPOHOME.buscarCliente(sDNI);
+        let oVivienda = oUPOHOME.buscarVivienda(sIdVivienda);
+        if(oCliente != null){
+            if(oVivienda != null){
+                let oAlquiler = new Alquiler(sId, sIdVivienda, sDNI, sFechaInicio, sFechaFin);
+
+                let sMensaje = oUPOHOME.añadirAlquiler(oAlquiler);
+
+                alert(sMensaje);
+                if(sMensaje == "Alquiler realizado con éxito"){
+                    ocultarFormularios();   
+                }
+            }else{
+                alert("No existe la vivienda.");
+            }
+        }else{
+            alert("No existe el cliente.");
+        }        
+    }
+}
+function cargarAlquiler() {
+    let idAlquiler = parseInt(frmCargarAlquiler.txtID.value.trim());
+
+    let oAlquiler = oUPOHOME.buscarAlquiler(idAlquiler);
+    if(oAlquiler == null){
+        alert("No se encuentran datos del alquiler.");
+    }else{
+        document.querySelector("#modificarAlquiler").style.display = "block";
+        frmModificarAlquiler.txtId.value = idAlquiler;
+        frmModificarAlquiler.txtIdVivienda.value = oAlquiler.idVivienda;
+        frmModificarAlquiler.txtDNI.value = oAlquiler.dniCliente;
+        frmModificarAlquiler.fechaInicio.value = oAlquiler.fechaInicio;
+        frmModificarAlquiler.fechaFin.value = oAlquiler.fechaFin;
+    } 
+} 
+function modificarAlquiler(){
+    //modificarAlquiler(sIdAlquiler, sDniCliente, sIdVivienda, dFechaInicio, dFechaFin)
+    let sId = parseInt(frmModificarAlquiler.txtId.value);
+    let sIdVivienda = parseInt(frmModificarAlquiler.txtIdVivienda.value);
+    let sDNI = frmModificarAlquiler.txtDNI.value.trim();
+    let sFechaInicio = frmModificarAlquiler.fechaInicio.value.trim();
+    let sFechaFin = frmModificarAlquiler.fechaFin.value.trim();
+
+    if( isNaN(sId) || sIdVivienda == "" ||sDNI == "" || sFechaInicio == "" || sFechaFin == ""  ){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        let oCliente = oUPOHOME.buscarCliente(sDNI);
+        if(oCliente != null){
+            let sMensaje = oUPOHOME.modificarAlquiler(sId, sIdVivienda, sDNI, sFechaInicio, sFechaFin);
+
+            alert(sMensaje);
+            if(sMensaje == "Alquiler modificado correctamente."){ 
+                ocultarFormularios();
+            }
+        }else{
+            alert("No existe el cliente.");
+        }
+
+    }
+}
+function borrarAlquiler(){
+    //
+    let sId = parseInt(frmEliminarAlquiler.txtID.value);
+
+    if(sId == ""){
+        alert("Debes rellenar todos los datos y debe estar correctamente");
+    }else{
+        
+        let sMensaje = oUPOHOME.borrarAlquiler(sId);
+
+        alert(sMensaje);
+        if(sMensaje == "Alquiler eliminado correctamente."){
+            ocultarFormularios();   
+        }
+        
+    }
+}
 //-----------------------------------------------------------------------------------------------//
 //VIVIENDA
 function agregarVivienda(){
@@ -148,7 +232,6 @@ function agregarVivienda(){
 
         alert(sMensaje);
         if(sMensaje == "La vivienda ya estaba dado de alta"){
-            document.querySelector("form[name='frmAgregarVivienda']").reset();
             ocultarFormularios();   
         }    
         
@@ -193,9 +276,6 @@ function modificarVivienda() {
 
         alert(sMensaje);
         if(sMensaje == "Vivienda modificada correctamente."){ 
-            document.querySelector("form[name='frmCargarVivienda']").reset();
-            document.querySelector("form[name='frmModificarVivienda']").reset();
-
             ocultarFormularios();
         }
         
@@ -212,7 +292,6 @@ function borrarVivienda() {
 
         alert(sMensaje);
         if(sMensaje == "Vivienda eliminada correctamente."){
-            document.querySelector("form[name='frmEliminarAlquiler']").reset();
             ocultarFormularios();   
         }
         
@@ -240,7 +319,6 @@ function altaCita() {
                 let sMensaje = oUPOHOME.altaCita(oCita);
 
                 alert(sMensaje);
-                document.querySelector("form[name='frmAsignarCita']").reset();
 
                 ocultarFormularios();   
             }else{
@@ -289,8 +367,6 @@ function modificarCita() {
 
                     alert(sMensaje);
                     if(sMensaje == "Cita modificada correctamente."){
-                        document.querySelector("form[name='frmCargarCita']").reset();
-                        document.querySelector("form[name='frmModificarCita']").reset();
                         ocultarFormularios();
                     }
                     
@@ -316,7 +392,6 @@ function borrarCita() {
 
         alert(sMensaje);
         if(sMensaje == "Cita eliminada correctamente."){
-            document.querySelector("form[name='frmEliminarCita']").reset();
             ocultarFormularios();   
         }
         
@@ -344,7 +419,6 @@ function contratarEmpleado(){
         let sMensaje = oUPOHOME.altaEmpleado(oEmpleado);
 
         alert(sMensaje);
-        document.querySelector("form[name='frmcontratarEmpleado']").reset();
 
         ocultarFormularios();   
     }
@@ -383,9 +457,6 @@ function modificarEmpleado() {
 
         alert(sMensaje);
         if(sMensaje == "Empleado modificado correctamente."){ 
-            document.querySelector("form[name='frmCargarEmpleado']").reset();
-            document.querySelector("form[name='frmModificarEmpleado']").reset();
-
             ocultarFormularios();
         }
         
@@ -402,7 +473,6 @@ function borrarEmpleado () {
 
         alert(sMensaje);
         if(sMensaje == "Empleado modificado correctamente."){
-            document.querySelector("form[name='frmDespedirEmpleado']").reset();
             ocultarFormularios();   
         }
         
@@ -430,8 +500,6 @@ function asignarLimpieza() {
     
                     alert(sMensaje);
                     if(sMensaje == "Limpieza asignada con exito"){
-                        document.querySelector("form[name='frmAsignarLimpieza']").reset();
-    
                         ocultarFormularios();   
                     }    
                    
@@ -484,8 +552,6 @@ function modificarLimpieza() {
 
                     alert(sMensaje);
                     if(sMensaje == "Limpieza modificada correctamente."){
-                        document.querySelector("form[name='frmCargarLimpieza']").reset();
-                        document.querySelector("form[name='frmModificarLimpieza']").reset();
                         ocultarFormularios();
                     }
                     
@@ -511,7 +577,6 @@ function borrarLimpieza() {
 
         alert(sMensaje);
         if(sMensaje == "Limpieza eliminada correctamente."){
-            document.querySelector("form[name='frmEliminarLimpieza']").reset();
             ocultarFormularios();   
         }
         
